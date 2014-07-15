@@ -22,6 +22,7 @@ function(cxx_test name sources)
     target_link_libraries(${name} ${ARGN} gtest ${CMAKE_THREAD_LIBS_INIT})
     set_property(TARGET ${name} APPEND PROPERTY INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/third-party/gtest-src/include")
     add_dependencies(${name} gtest_ext)
+    include_directories("${CMAKE_BINARY_DIR}/third-party/gtest-src/include")
     # Working directory: where the dlls are installed.
     add_test(NAME ${name} 
              COMMAND ${name} "--gtest_break_on_failure")
